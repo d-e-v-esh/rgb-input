@@ -1,29 +1,32 @@
 import React from "react";
 import "./styles/app.scss";
-import { connect } from "react-redux";
+import reducer from "./store/color";
+import { useSelector, useDispatch } from "react-redux";
 import { controlRed, controlGreen, controlBlue } from "./store/color";
 
-const mapDispatch = { controlRed, controlGreen, controlBlue };
-
 const App = () => {
+  const { red, green, blue } = useSelector(reducer);
+  const dispatch = useDispatch();
   const redDragHandler = (e) => {
     const redValue = e.target.value;
     console.log(redValue);
-    controlRed(redValue);
+    dispatch(controlRed(redValue));
   };
 
   const greenDragHandler = (e) => {
-    //e.target.value
+    const greenValue = e.target.value;
+    dispatch(controlGreen(greenValue));
   };
 
   const blueDragHandler = (e) => {
-    //e.target.value
+    const greenValue = e.target.value;
+    dispatch(controlBlue(greenValue));
   };
 
   return (
     <div>
       <div className="container">
-        <div className="colouredSquare" />
+        <div className="colouredSquare" style />
       </div>
 
       <div className="sliderInputs">
@@ -36,6 +39,7 @@ const App = () => {
               max={255}
               id="redInput"
               onChange={redDragHandler}
+              // value={0}
             />
           </label>
         </div>
@@ -49,6 +53,7 @@ const App = () => {
               max={255}
               id="greenInput"
               onChange={greenDragHandler}
+              // value={50}
             />
           </label>
         </div>
@@ -62,6 +67,7 @@ const App = () => {
               max={255}
               id="blueInput"
               onChange={blueDragHandler}
+              // value={0}
             />
           </label>
         </div>

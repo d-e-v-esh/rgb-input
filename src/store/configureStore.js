@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import colorReducer from "./color";
+import reducer from "./color";
 
 const store = configureStore({
-  reducer: colorReducer,
+  reducer: reducer,
 });
 
 export default store;

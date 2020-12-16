@@ -1,18 +1,27 @@
-import { createAction, createReducer } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+const initState = {
   red: 0,
   green: 0,
   blue: 0,
 };
 
-export const controlRed = createAction("controlRed");
-export const controlGreen = createAction("controlGreen");
-export const controlBlue = createAction("controlBlue");
-
-const counterReducer = createReducer(initialState, {
-  [controlRed.type]: (state, action) => state + action.payload,
-  [controlGreen.type]: (state, action) => state - action.payload,
+const colorSlice = createSlice({
+  name: "color",
+  initialState: initState,
+  reducers: {
+    controlRed(state, action) {
+      state.red = action.payload;
+    },
+    controlGreen(state, action) {
+      state.green = action.payload;
+    },
+    controlBlue(state, action) {
+      state.blue = action.payload;
+    },
+  },
 });
 
-export default counterReducer;
+export const { controlRed, controlGreen, controlBlue } = colorSlice.actions;
+
+export default colorSlice.reducer;
