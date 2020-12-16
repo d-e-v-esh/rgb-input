@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { controlRed, controlGreen, controlBlue } from "./store/color";
 
 const App = () => {
-  const { red, green, blue } = useSelector(reducer);
+  const { red, green, blue } = useSelector((state) => state.color);
   const dispatch = useDispatch();
   const redDragHandler = (e) => {
     const redValue = e.target.value;
@@ -26,7 +26,7 @@ const App = () => {
   return (
     <div>
       <div className="container">
-        <div className="colouredSquare" style />
+        <div className="colouredSquare" />
       </div>
 
       <div className="sliderInputs">
