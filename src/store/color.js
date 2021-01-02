@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initState = {
+const initialState = {
   red: 0,
   green: 0,
   blue: 0,
@@ -8,7 +8,7 @@ const initState = {
 
 const colorSlice = createSlice({
   name: "color",
-  initialState: initState,
+  initialState,
   reducers: {
     controlRed(state, action) {
       state.red = action.payload;
